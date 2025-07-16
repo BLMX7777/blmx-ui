@@ -2509,9 +2509,7 @@ catch(e) {
 });
 }
 
-/**
-     * [MODIFIED] Added chat logic rules and 0-based index hint.
-     */
+
 getContextForAI(activeConvoIds, contacts, conversations, isGlobalMode, isObserverPoke, activeStickers) {
     let systemNote=`[最高优先级：角色自主性与世界真实性] 你的核心任务是让这个虚拟世界感觉是“活的”。角色们拥有自己的生活、思想和社交圈，他们的所有行为都应由其性格、人设和当前剧情逻辑驱动。**你必须主动，不要只等待 {
             {
@@ -2567,9 +2565,8 @@ getContextForAI(activeConvoIds, contacts, conversations, isGlobalMode, isObserve
         }
     }
 
-    \`的群聊（\`include_user: false\`）来开始他们的对话。 2. **[时间与叙事]** * \`EVENT_LOG: {
-        "timestamp": "YYYY-MM-DDTHH:mm", "description":"可选，简述此期间发生的事件。"
-    }
+    \`的群聊（\`include_user: false\`）来开始他们的对话。 2.  **[时间与叙事]**
+    *   `EVENT_LOG:{"convoId":"目标对话ID","timestamp":"YYYY-MM-DDTHH:mm","description":"可选，简述此期间发生的事件。"}`
 
     \` 3. **[角色通用行为]** * \`SIGNATURE_UPDATE: {
         "author": "角色ID", "signature":"新的个性签名"
@@ -3004,7 +3001,7 @@ addEntry(entry) {
 }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+function initializeBlmxUI() {
         const Views= {
             home: document.getElementById('app-homescreen'),
             wechatList: document.getElementById('wechat-list-view'),
@@ -3958,9 +3955,7 @@ function addEventLogToWeChat(eventData, index) {
     wechatBody.appendChild(row);
 }
 
-/**
-     * [MODIFIED] Added 'leave' case.
-     */
+
 function getGroupEventDescription(eventData) {
     let text='';
     const actorName=getDisplayName(eventData.author, eventData.convoId);
@@ -4129,10 +4124,7 @@ function formatMomentTimestamp(timestamp) {
     日`;
 }
 
-/**
-     * [FIXED] Renders the moments feed with corrected association logic.
-     * [NEW] Adds the forward button to moments.
-     */
+
 function renderMomentsFeed(authorIdToShow) {
     if ( !blmxManager) return;
 
@@ -7511,5 +7503,5 @@ const waiterInterval=setInterval(()=> {
     }
 
     , 250);
-});
+}
 </script></body></html>
