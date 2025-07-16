@@ -2355,7 +2355,7 @@ class BLMX_Protocol {
     addEntry(entry) { this.logEntries.push(entry); }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+
     const Views = {
         home: document.getElementById('app-homescreen'),
         wechatList: document.getElementById('wechat-list-view'),
@@ -4196,7 +4196,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         return targetPost && (targetPost.data.author === 'user' || targetPost.data.author === '{{user}}');
                     }
                     return false;
-                });
                 
                 const lastMomentByOther = [...blmxManager.logEntries].reverse().find(e => e.key === 'MOMENT' && e.data.author !== 'user');
 
