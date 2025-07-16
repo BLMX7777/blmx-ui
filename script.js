@@ -1114,9 +1114,11 @@ const css = `
         }
 `;
 
+// 这段代码会自动把你的CSS应用到页面上
 const styleSheet = document.createElement("style");
 styleSheet.innerText = css;
 document.head.appendChild(styleSheet);
+
 
 class BLMX_Protocol {
     constructor(tavernHelperBridge, charId) {
@@ -1579,7 +1581,7 @@ class BLMX_Protocol {
     addEntry(entry) { this.logEntries.push(entry); }
 }
 
-
+document.addEventListener('DOMContentLoaded', function() {
     const Views = {
         home: document.getElementById('app-homescreen'),
         wechatList: document.getElementById('wechat-list-view'),
@@ -3420,6 +3422,7 @@ class BLMX_Protocol {
                         return targetPost && (targetPost.data.author === 'user' || targetPost.data.author === '{{user}}');
                     }
                     return false;
+                });
                 
                 const lastMomentByOther = [...blmxManager.logEntries].reverse().find(e => e.key === 'MOMENT' && e.data.author !== 'user');
 
